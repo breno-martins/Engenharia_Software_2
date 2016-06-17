@@ -1,4 +1,4 @@
-#include<stdio.h>
+#include <stdio.h>
 #include <stdlib.h>
 
 
@@ -52,7 +52,14 @@ int main(){
             break;
 
         case 7:
-            return 0;
+            system("clear");
+            printf("Deseja mesmo sair?[s/n]\n");
+            __fpurge(stdin);
+            scanf("%c", &sn);
+            if(sn == 's')
+            	return 0;
+            else
+		main();
             break;
 
         default:
@@ -70,7 +77,7 @@ int main(){
         printf("Digite o segundo valor: ");
         scanf("%f", &y);
         res=x+y;
-        printf("%.2f + %.2f = %.2f\n",x, y, res);
+        printf("%.6f + %.6f = %.6f\n",x, y, res);
         printf("Pressione Enter para retornar ao menu principal\n");
         __fpurge(stdin);
         scanf("%c", &wait);
@@ -85,7 +92,7 @@ int main(){
         printf("Digite o segundo valor: ");
         scanf("%f", &y);
         res=x-y;
-        printf("%.2f - %.2f = %.2f\n",x, y, res);
+        printf("%.6f - %.6f = %.6f\n",x, y, res);
         printf("Pressione Enter para retornar ao menu principal\n");
         __fpurge(stdin);
         scanf("%c", &wait);
@@ -100,7 +107,7 @@ int main(){
         printf("Digite o segundo valor: ");
         scanf("%f", &y);
         res=x*y;
-        printf("%.4f * %.4f = %.4f\n",x, y, res);
+        printf("%.6f * %.6f = %.6f\n",x, y, res);
         printf("Pressione Enter para retornar ao menu principal\n");
         __fpurge(stdin);
         scanf("%c", &wait);
@@ -115,7 +122,7 @@ int main(){
         printf("Digite o segundo valor: ");
         scanf("%f", &y);
         res=x/y;
-        printf("%.4f / %.4f = %.4f\n",x, y, res);
+        printf("%.6f / %.6f = %.6f\n",x, y, res);
         printf("Pressione Enter para retornar ao menu principal\n");
         __fpurge(stdin);
         scanf("%c", &wait);
@@ -125,18 +132,18 @@ int main(){
     void digitos(){
         system("clear");
         printf("CONTAGEM DE DÍGITOS\n\n");
-        int contaDigitos = 0, valor, numero;
-        printf("Digite o valor que terá os dígitos contados\n");
-        scanf("%d", &numero);
-        valor=numero;
-        if (valor == 0) contaDigitos = 1;
+        int contaDigitos = 0, valor=0;
+        printf("Digite o valor que terá os dígitos contados(Entre -999.999.999 e 999.999.999)\n");
+        scanf("%d", &valor);
+        if (valor == 0) 
+            contaDigitos = 1;
         else
-            while (valor != 0)
-           {
-              contaDigitos = contaDigitos + 1;
-               valor = valor / 10;
-          }
-      printf("O número %d tem %d dígitos\n", numero, contaDigitos);
+            while (valor != 0){
+                contaDigitos = contaDigitos + 1;
+                valor = valor / 10;
+            }
+
+      printf("O número digitado possui %d dígitos\n", contaDigitos);
       printf("Pressione Enter para retornar ao menu principal\n");
         __fpurge(stdin);
         scanf("%c", &wait);
@@ -150,16 +157,16 @@ int main(){
         __fpurge(stdin);
         scanf("%s", senha);
         if (strcmp(senha,tardis) == 0){
-            if (avis=1)
+            if (avis == 1)
                 printf("\nNão há avisos no momento, deseja cadastrar um?[s/n]\n");
             else
-                printf("\nO aviso atual é '%s', gostaria de alterá-lo?[s/n]\n", aviso);
+                printf("\nO aviso atual é %s \nGostaria de alterá-lo?[s/n]\n", aviso);
             __fpurge(stdin);
             scanf("%c", &sn);
-            if(sn=='s'){
+            if(sn == 's'){
                 printf("Digite o novo aviso:\n");
                 __fpurge(stdin);
-                gets(aviso);
+                fgets(aviso, 101, stdin);
                 printf("Aviso cadastrado. ");
                 avis=3;
             }
